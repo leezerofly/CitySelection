@@ -1,13 +1,14 @@
 <template>
-  <el-row class="demo-autocomplete">
-    <el-col>
+  <el-row :span="24" class="demo-autocomplete" >
+    <el-col :span="24">
       <el-autocomplete
         class="inline-input"
         v-model="state2"
         :fetch-suggestions="querySearch"
-        placeholder="请输入内容"
+        placeholder="输入城市名搜索"
         :trigger-on-focus="false"
         @select="handleSelect"
+        style="width: 100%;"
       ></el-autocomplete>
     </el-col>
   </el-row>

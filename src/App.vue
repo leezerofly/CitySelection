@@ -5,34 +5,41 @@
         <Search/>
       </el-header>
       <el-main>
-        <img src="./assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
-        <el-button>默认按钮</el-button>
+        <PositionBox msg=""/>
+        <CityList/>
       </el-main>
     </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PositionBox from './components/PositionBox.vue'
 import Search from './components/Search.vue'
+import CityList from './components/CityList.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-    Search
+    PositionBox,
+    Search,
+    CityList
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  background-color: #EBEEF5;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.el-header {
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  line-height: 60px;
+  text-align: center;
 }
 </style>
