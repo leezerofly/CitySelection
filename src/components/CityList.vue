@@ -28,6 +28,14 @@ export default {
       hotCityList: cityData.hotCityList,
       openCityList: cityData.openCityList
     }
+  },
+    methods: {
+    setCurrent(row) {
+      this.$refs.singleTable.setCurrentRow(row);
+    },
+    handleCurrentChange(val) {
+      this.currentRow = val;
+    }
   }
 }
 </script>
