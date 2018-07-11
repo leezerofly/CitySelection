@@ -6,13 +6,13 @@
         <el-button size="medium" @click="changeCity(city)">{{ city.name }}</el-button>
       </el-col>
     </el-row>
-    <div v-for="city in openCityList" :key="city[0]">
-      <p class="title">{{ city[0] }}</p>
+    <div v-for="citys in openCityList" :key="citys[0]">
+      <p class="title" :ref="citys[0]">{{ citys[0] }}</p>
       <el-table
-        :data="city[1]"
+        :data="citys[1]"
         :show-header="false"
         highlight-current-row
-        @current-change="handleCurrentChange"
+        @current-change="changeCity"
         style="width: 100%">
         <el-table-column prop="name"></el-table-column>
       </el-table>
@@ -21,23 +21,32 @@
 </template>
 
 <script>
-import cityData from '../cityData.js'
 
 export default {
-  data() {
-    return {
-      hotCityList: cityData.hotCityList, // 热门城市列表
-      openCityList: cityData.openCityList // 城市列表
-    }
+  props: {
+    hotCityList: {
+      type: Array,
+      default: []
+    },
+    openCityList: {
+      type: Array,
+      default: []
+    },
+    // cityIndexList: Array,
+    elementIndex: String
   },
   methods: {
-    // 通过Element的table单选发起一个changeCity事件
-    handleCurrentChange(newCity) {
-      this.$emit('change-city', newCity);
-    },
-    // 通过按钮发起一个changeCity事件
+    // 发起一个changeCity事件
     changeCity (newCity) {
       this.$emit('change-city', newCity);
+    }
+  },
+  watch: {
+    elementIndex (val) {
+      if (val === '顶') {
+        return false;
+      }
+      this.$emit('singleLetter', this.$refs[val][0]);
     }
   }
 }

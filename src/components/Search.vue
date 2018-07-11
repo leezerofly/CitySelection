@@ -20,6 +20,10 @@
 import cityData from '../cityData.js'
 
 export default {
+  name: 'Search',
+  props: {
+    openCityList: Array
+  },
   data() {
     return {
       searchList: [],
@@ -45,8 +49,7 @@ export default {
     // 处理并加载搜索列表
     loadAll() {
       var searchList = [];
-      var openCityList = cityData.openCityList;
-      openCityList.map(function (item) {
+      this.openCityList.map(function (item) {
         searchList = searchList.concat(item[1]);
       })
       return searchList;
