@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    // 根据不同的状况赋值不同的样式
+    // 根据不同的状况赋不同的样式
     navClass (item) {
       return this.flagText === item ? 'flagItem' : 'navItem'
     },
@@ -72,7 +72,7 @@ export default {
     text-align center
     line-height 20px
     font-size 18px
-    color #fff
+    color #C0C4CC
     user-select none
   .flagItem
     width 20px

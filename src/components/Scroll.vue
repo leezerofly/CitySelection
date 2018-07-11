@@ -51,36 +51,36 @@ export default {
       if (this.listenScroll) {
         // 滚动开始时触发
         this.scroll.on('scrollStart', () => {
-          this.$emit('isFlagShow', true)
+          this.$emit('isFlagShow', true);
         })
         // pos为位置参数
         this.scroll.on('scroll', (pos) => {
-          this.$emit('distance', Math.abs(pos.y))
-          this.$emit('isFlagShow', true)
+          this.$emit('distance', Math.abs(pos.y));
+          this.$emit('isFlagShow', true);
         })
         // 滚动结束
         this.scroll.on('scrollEnd', () => {
-          this.$emit('isFlagShow', false)
+          this.$emit('isFlagShow', false);
         })
       }
     },
     // 滚向位置
     scrollTo () {
-      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments);
     },
     // 滚向元素
     scrollToElement () {
-      this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
+      this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments);
     },
     // 确保绑定成功
     refresh () {
-      this.scroll && this.scroll.refresh()
+      this.scroll && this.scroll.refresh();
     }
   },
   watch: {
     data (val) {
       setTimeout(() => {
-        this.refresh()
+        this.refresh();
       }, 20)
     }
   }

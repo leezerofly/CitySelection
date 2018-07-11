@@ -32,7 +32,6 @@ export default {
       type: Array,
       default: []
     },
-    // cityIndexList: Array,
     elementIndex: String
   },
   methods: {
@@ -46,7 +45,7 @@ export default {
       if (val === '顶') {
         return false;
       }
-      this.$emit('singleLetter', this.$refs[val][0]);
+      this.$emit('scrollToLetter', this.$refs[val][0]);
     }
   }
 }

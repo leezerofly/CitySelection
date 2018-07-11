@@ -56,7 +56,7 @@ export default {
     },
     // 发起一个changeCity事件
     handleSelect(newCity) {
-      this.$emit('change-city', newCity)
+      this.$emit('change-city', newCity);
     }
   },
   mounted() {
