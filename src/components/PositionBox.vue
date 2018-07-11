@@ -1,16 +1,14 @@
 <template>
   <div class="hello">
-    <div class="selected-city">
-      <span>你已选择：{{ historyCityArr[0].name || historyCityArr[0].city }}</span>
-    </div>
+    <p class="title">你已选择：{{ historyCityArr[0].name || historyCityArr[0].city }}</p>
     <div class="selected-city-history">
-      <h3>定位</h3>
+      <p class="title">定位</p>
       <el-button size="medium" @click="changeCity(currentCity)">
         <i class="el-icon-location"></i>{{ currentCity.city }}
       </el-button>
-      <h3>最近选择</h3>
+      <p class="title">最近选择</p>
       <el-row>
-        <el-col v-for="city in historyCityArr" :key="city.id" :xs="8" :sm="2" :md="2" :lg="2" :xl="2">
+        <el-col v-for="(city, index) in historyCityArr" :key="index" :xs="8" :sm="2" :md="2" :lg="2" :xl="2">
           <el-button size="medium" @click="changeCity(city)">
             {{ city.name || city.city }}
           </el-button>
@@ -32,23 +30,26 @@ export default {
     }
   },
   created () {
-    this.getPosition()
+    this.getPosition();
   },
   methods: {
     // 定位当前所在城市
     getPosition () {
-      var self = this
+      var self = this;
       axios.get('https://restapi.amap.com/v3/ip?key=ad0bab010adc9943844643623faa828d')
         .then(function (response) {
           self.currentCity = response.data
         })
         .catch(function (error) {
-          console.log(error);
+          this.$message({
+            message: `获取定位失败${error}`,
+            type: 'warning'
+          });
         });
     },
     // 发起一个changeCity事件
     changeCity (newCity) {
-      this.$emit('change-city', newCity)
+      this.$emit('change-city', newCity);
     }
   }
 }

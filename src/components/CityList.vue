@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p>热门城市</p>
+    <p class="title">热门城市</p>
     <el-row>
       <el-col v-for="city in hotCityList" :key="city.id" :xs="8" :sm="2" :md="2" :lg="2" :xl="2">
         <el-button size="medium" @click="changeCity(city)">{{ city.name }}</el-button>
       </el-col>
     </el-row>
     <div v-for="city in openCityList" :key="city[0]">
-      <h3>{{ city[0] }}</h3>
+      <p class="title">{{ city[0] }}</p>
       <el-table
         :data="city[1]"
         :show-header="false"
@@ -33,11 +33,11 @@ export default {
   methods: {
     // 通过Element的table单选发起一个changeCity事件
     handleCurrentChange(newCity) {
-      this.$emit('change-city', newCity)
+      this.$emit('change-city', newCity);
     },
     // 通过按钮发起一个changeCity事件
     changeCity (newCity) {
-      this.$emit('change-city', newCity)
+      this.$emit('change-city', newCity);
     }
   }
 }

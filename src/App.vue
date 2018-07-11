@@ -37,11 +37,22 @@ export default {
   methods: {
     // 改变选择城市
     changeCity (newCity) {
-      if (this.historyCityArr.length > 2) {
-        this.historyCityArr.pop();
-      }
-      this.historyCityArr.unshift(newCity);
-      this.setHistoryCity(this.historyCityArr);
+      this.$confirm('确定切换城市?', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        center: true,
+        showClose: false,
+        customClass: 'confirm'
+      }).then(() => {
+        if (newCity !== this.historyCityArr[0]) {
+          if (this.historyCityArr.length > 2) {
+            this.historyCityArr.pop();
+          }
+          this.historyCityArr.unshift(newCity);
+          this.setHistoryCity(this.historyCityArr);
+        }
+      }).catch(() => {        
+      });
     },
     // 设置历史城市
     setHistoryCity (arr) {
@@ -58,6 +69,7 @@ export default {
 </script>
 
 <style>
+body { margin: 0 !important; }
 #app {
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -71,5 +83,20 @@ export default {
   font-size: 14px;
   line-height: 60px;
   text-align: center;
+  width: 100%;
+  position:fixed;
+  z-index: 3000;
+}
+.el-main {
+  background-color: #EBEEF5;
+  width: 100%;
+  padding: 16px !important;
+  margin-top: 60px;
+}
+.title {
+  font-size: 18px;
+}
+.confirm {
+  width: 250px !important;
 }
 </style>
